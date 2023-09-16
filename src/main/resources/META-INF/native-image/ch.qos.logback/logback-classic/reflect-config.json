@@ -1,0 +1,32 @@
+[
+  {
+    "name": "ch.qos.logback.classic.filter.ThresholdFilter",
+    "allDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicFields": true,
+    "allDeclaredClasses": true,
+    "allDeclaredConstructors": true,
+    "queryAllPublicMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicConstructors": true,
+    "queryAllPublicConstructors": true,
+    "allPublicClasses": true
+  },
+  {
+    "name": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+    "allDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicFields": true,
+    "allDeclaredClasses": true,
+    "allDeclaredConstructors": true,
+    "queryAllPublicMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicConstructors": true,
+    "queryAllPublicConstructors": true,
+    "allPublicClasses": true
+  }
+]

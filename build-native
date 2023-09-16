@@ -1,0 +1,4 @@
+#! /bin/sh
+cd "$(dirname "$0")" || exit
+mvn clean package -Pnative native:compile-no-fork
+cp target/zookeeper ./zookeeper

@@ -1,0 +1,54 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Linux\/aarch64\/\\E.*\\Q.so\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Linux\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Linux\/aarch64\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Linux\/x86_64\/\\E.*\\Q.so\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Linux\/x86_64\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Mac\/aarch64\/\\E.*\\Q.dylib\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Mac\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Mac\/aarch64\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Mac\/x86_64\/\\E.*\\Q.dylib\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Mac\/x86_64\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Windows\/x86_64\/\\E.*\\Q.dll\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Windows\\E"
+      },
+      {
+        "pattern": "\\Qorg\/xerial\/snappy\/native\/Windows\/x86_64\\E"
+      }
+    ]
+  }
+}
