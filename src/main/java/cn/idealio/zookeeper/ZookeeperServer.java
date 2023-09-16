@@ -23,13 +23,9 @@ public class ZookeeperServer extends ZooKeeperServerMain {
     private static final Logger LOG = LoggerFactory.getLogger(ZookeeperServer.class);
 
     public static void main(String[] args) {
-        if (args == null || args.length == 0) {
-            cli(args);
-            return;
-        }
         Set<String> argSet = new LinkedHashSet<>(Arrays.asList(args));
-        boolean remove = argSet.remove("--start");
-        if (!remove) {
+        boolean remove = argSet.remove("--cli");
+        if (remove) {
             cli(args);
             return;
         }
