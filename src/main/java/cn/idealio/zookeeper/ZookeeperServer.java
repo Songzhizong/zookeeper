@@ -29,6 +29,9 @@ public class ZookeeperServer extends ZooKeeperServerMain {
             cli(args);
             return;
         }
+        if (argSet.isEmpty()) {
+            argSet.add("./conf/zoo.cfg");
+        }
         String[] array = argSet.toArray(String[]::new);
         startServer(array);
     }
