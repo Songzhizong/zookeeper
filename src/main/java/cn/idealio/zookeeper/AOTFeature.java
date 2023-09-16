@@ -13,5 +13,10 @@ public class AOTFeature implements Feature {
     public void duringSetup(DuringSetupAccess access) {
         Module module = AOTFeature.class.getModule();
         RuntimeResourceAccess.addResource(module, "logback.xml");
+
+        RuntimeResourceAccess.addResource(
+                jline.console.completer.CandidateListCompletionHandler.class.getModule(),
+                "jline/console/completer/CandidateListCompletionHandler.properties"
+        );
     }
 }

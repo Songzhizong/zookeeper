@@ -1,0 +1,17 @@
+[
+  {
+    "name": "jline.UnixTerminal",
+    "allDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicFields": true,
+    "allDeclaredClasses": true,
+    "allDeclaredConstructors": true,
+    "queryAllPublicMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicConstructors": true,
+    "queryAllPublicConstructors": true,
+    "allPublicClasses": true
+  }
+]
