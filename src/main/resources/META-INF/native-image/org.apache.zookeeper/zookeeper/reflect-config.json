@@ -88,5 +88,35 @@
     "allPublicConstructors": true,
     "queryAllPublicConstructors": true,
     "allPublicClasses": true
+  },
+  {
+    "name": "com.sun.management.UnixOperatingSystemMXBean",
+    "allDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicFields": true,
+    "allDeclaredClasses": true,
+    "allDeclaredConstructors": true,
+    "queryAllPublicMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicConstructors": true,
+    "queryAllPublicConstructors": true,
+    "allPublicClasses": true
+  },
+  {
+    "name": "com.sun.management.internal.OperatingSystemImpl",
+    "allDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicFields": true,
+    "allDeclaredClasses": true,
+    "allDeclaredConstructors": true,
+    "queryAllPublicMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicConstructors": true,
+    "queryAllPublicConstructors": true,
+    "allPublicClasses": true
   }
 ]
