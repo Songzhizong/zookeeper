@@ -3,10 +3,10 @@ package cn.idealio.zookeeper;
 import org.apache.zookeeper.ZooKeeperMain;
 import org.apache.zookeeper.audit.ZKAuditProvider;
 import org.apache.zookeeper.server.ExitCode;
-import org.apache.zookeeper.server.ZooKeeperServerMain;
 import org.apache.zookeeper.server.admin.AdminServer;
 import org.apache.zookeeper.server.persistence.FileTxnSnapLog;
 import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
+import org.apache.zookeeper.server.quorum.QuorumPeerMain;
 import org.apache.zookeeper.util.ServiceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import java.util.Set;
 /**
  * @author 宋志宗 on 2023/9/16
  */
-public class ZookeeperServer extends ZooKeeperServerMain {
+public class ZookeeperServer extends QuorumPeerMain {
     private static final Logger LOG = LoggerFactory.getLogger(ZookeeperServer.class);
 
     public static void main(String[] args) {
@@ -47,34 +47,33 @@ public class ZookeeperServer extends ZooKeeperServerMain {
     private static void startServer(String[] args) {
         System.setProperty("zookeeper.admin.enableServer", "false");
         ZookeeperServer server = new ZookeeperServer();
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            LOG.info("Shutdown successfully");
-        }));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> LOG.info("Shutdown successfully")));
         try {
             server.initializeAndRun(args);
-        } catch (IllegalArgumentException var3) {
-            LOG.error("Invalid arguments, exiting abnormally", var3);
-            LOG.info("Usage: ZooKeeperServerMain configfile | port datadir [ticktime] [maxcnxns]");
-            System.err.println("Usage: ZooKeeperServerMain configfile | port datadir [ticktime] [maxcnxns]");
+        } catch (IllegalArgumentException e) {
+            LOG.error("Invalid arguments, exiting abnormally", e);
+            String usage = "Usage: QuorumPeerMain configfile";
+            LOG.info(usage);
+            System.err.println(usage);
             ZKAuditProvider.addServerStartFailureAuditLog();
             ServiceUtils.requestSystemExit(ExitCode.INVALID_INVOCATION.getValue());
-        } catch (QuorumPeerConfig.ConfigException var4) {
-            LOG.error("Invalid config, exiting abnormally", var4);
+        } catch (QuorumPeerConfig.ConfigException e) {
+            LOG.error("Invalid config, exiting abnormally", e);
             System.err.println("Invalid config, exiting abnormally");
             ZKAuditProvider.addServerStartFailureAuditLog();
             ServiceUtils.requestSystemExit(ExitCode.INVALID_INVOCATION.getValue());
-        } catch (FileTxnSnapLog.DatadirException var5) {
-            LOG.error("Unable to access datadir, exiting abnormally", var5);
+        } catch (FileTxnSnapLog.DatadirException e) {
+            LOG.error("Unable to access datadir, exiting abnormally", e);
             System.err.println("Unable to access datadir, exiting abnormally");
             ZKAuditProvider.addServerStartFailureAuditLog();
             ServiceUtils.requestSystemExit(ExitCode.UNABLE_TO_ACCESS_DATADIR.getValue());
-        } catch (AdminServer.AdminServerException var6) {
-            LOG.error("Unable to start AdminServer, exiting abnormally", var6);
+        } catch (AdminServer.AdminServerException e) {
+            LOG.error("Unable to start AdminServer, exiting abnormally", e);
             System.err.println("Unable to start AdminServer, exiting abnormally");
             ZKAuditProvider.addServerStartFailureAuditLog();
             ServiceUtils.requestSystemExit(ExitCode.ERROR_STARTING_ADMIN_SERVER.getValue());
-        } catch (Exception var7) {
-            LOG.error("Unexpected exception, exiting abnormally", var7);
+        } catch (Exception e) {
+            LOG.error("Unexpected exception, exiting abnormally", e);
             ZKAuditProvider.addServerStartFailureAuditLog();
             ServiceUtils.requestSystemExit(ExitCode.UNEXPECTED_ERROR.getValue());
         }
