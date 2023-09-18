@@ -10,14 +10,17 @@
     <properties>
         <java.version>17</java.version>
         <jline.version>2.14.6</jline.version>
+        <jsr305.version>3.0.2</jsr305.version>
         <metrics.version>4.2.19</metrics.version>
         <snappy.version>1.1.10.3</snappy.version>
         <zookeeper.version>3.9.0</zookeeper.version>
         <commons-cli.version>1.5.0</commons-cli.version>
         <jetty.version>9.4.51.v20230217</jetty.version>
 
+        <timestamp>${maven.build.timestamp}</timestamp>
         <mainClass>cn.idealio.zookeeper.ZookeeperServer</mainClass>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss.SSS'Z'</maven.build.timestamp.format>
 
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <native-maven-plugin.version>0.9.26</native-maven-plugin.version>
@@ -43,6 +46,11 @@
                 <groupId>jline</groupId>
                 <artifactId>jline</artifactId>
                 <version>${jline.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.dropwizard.metrics</groupId>
@@ -87,6 +95,10 @@
         <dependency>
             <groupId>jline</groupId>
             <artifactId>jline</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
         </dependency>
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
@@ -141,6 +153,12 @@
     </profiles>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

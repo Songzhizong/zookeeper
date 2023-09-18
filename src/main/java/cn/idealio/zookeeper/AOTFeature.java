@@ -18,6 +18,7 @@ public class AOTFeature implements Feature {
         try {
             Module module = AOTFeature.class.getModule();
             RuntimeResourceAccess.addResource(module, "logback.xml");
+            RuntimeResourceAccess.addResource(module, "zk_env.properties");
 
             Module jlineModule = CandidateListCompletionHandler.class.getModule();
             RuntimeResourceAccess.addResource(

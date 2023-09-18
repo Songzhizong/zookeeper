@@ -24,6 +24,9 @@ public class ZookeeperServer extends QuorumPeerMain {
 
     public static void main(String[] args) {
         Set<String> argSet = new LinkedHashSet<>(Arrays.asList(args));
+        // 执行命令行
+        if (!CommandLineHandler.exec(argSet)) return;
+
         boolean remove = argSet.remove("--cli");
         if (remove) {
             cli(args);

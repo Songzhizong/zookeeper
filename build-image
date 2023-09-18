@@ -1,0 +1,8 @@
+#! /bin/sh
+image_name=native-zookeeper
+image_version=$(./zookeeper -v)
+image=$image_name:$image_version
+
+cd "$(dirname "$0")"/docker || exit
+cp ../zookeeper ./
+docker build -t "$image" --build-arg NATIVE_FILE=zookeeper .
