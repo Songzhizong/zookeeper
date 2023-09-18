@@ -13,25 +13,30 @@ public class CommandLineHandler {
     private static final String PROJECT_NAME = "native-zookeeper";
 
     public static boolean exec(@Nonnull Set<String> args) {
+        boolean exit = false;
         for (String arg : args) {
             if (StringUtils.isBlank(arg)) {
                 help();
-                return false;
+                exit = true;
             }
             if ("--help".equals(arg) || "-h".equals(arg)) {
                 help();
-                return false;
+                exit = true;
             }
             if ("--all".equals(arg) || "-a".equals(arg)) {
                 info();
-                return false;
+                exit = true;
             }
             if ("--version".equals(arg) || "-v".equals(arg)) {
                 version();
-                return false;
+                exit = true;
             }
         }
-        return true;
+        if (exit) {
+            System.exit(0);
+        }
+        //noinspection ConstantValue
+        return exit;
     }
 
     public static void help() {

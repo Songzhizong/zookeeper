@@ -11,6 +11,7 @@ import org.apache.zookeeper.util.ServiceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -25,32 +26,34 @@ public class ZookeeperServer extends QuorumPeerMain {
     public static void main(String[] args) {
         Set<String> argSet = new LinkedHashSet<>(Arrays.asList(args));
         // 执行命令行
-        if (!CommandLineHandler.exec(argSet)) {
-            System.exit(0);
+        if (CommandLineHandler.exec(argSet)) {
             return;
         }
 
-        boolean remove = argSet.remove("--cli");
-        if (remove) {
-            cli(args);
+        // cli
+        if (argSet.remove("--cli")) {
+            cli(argSet);
             return;
         }
-        if (argSet.isEmpty()) {
-            argSet.add("./conf/zoo.cfg");
-        }
-        String[] array = argSet.toArray(String[]::new);
-        startServer(array);
+
+        // start server
+        startServer(argSet);
     }
 
-    private static void cli(String[] args) {
+    private static void cli(@Nonnull Set<String> argSet) {
         try {
-            ZooKeeperMain.main(args);
+            ZooKeeperMain.main(argSet.toArray(String[]::new));
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static void startServer(String[] args) {
+    private static void startServer(@Nonnull Set<String> argSet) {
+        if (argSet.isEmpty()) {
+            argSet.add("./conf/zoo.cfg");
+        }
+        String[] args = argSet.toArray(String[]::new);
+
         System.setProperty("zookeeper.admin.enableServer", "false");
         ZookeeperServer server = new ZookeeperServer();
         Runtime.getRuntime().addShutdownHook(new Thread(() -> LOG.info("Shutdown successfully")));
