@@ -52,14 +52,17 @@ public class ZookeeperServer extends QuorumPeerMain {
         try {
             String[] args = argSet.toArray(String[]::new);
             if (args.length == 0) {
-                args = new String[]{"127.0.0.1", "2181"};
-            }
-            if (args.length == 2) {
+                System.out.println(FourLetterWordMain.send4LetterWord("127.0.0.1", 2181, "srvr"));
+            } else if (args.length == 1) {
+                System.out.println(FourLetterWordMain.send4LetterWord("127.0.0.1", Integer.parseInt(args[0]), "srvr"));
+            } else if (args.length == 2) {
                 System.out.println(FourLetterWordMain.send4LetterWord(args[0], Integer.parseInt(args[1]), "srvr"));
             } else if (args.length == 3) {
                 System.out.println(FourLetterWordMain.send4LetterWord(args[0], Integer.parseInt(args[1]), "srvr", Boolean.parseBoolean(args[2])));
             } else {
                 System.out.println("Usage: --status <host> <port> <secure(optional)>");
+                System.out.println("Usage: --status, same as --status 127.0.0.1 2181");
+                System.out.println("Usage: --status 2181, same as --status 127.0.0.1 2181");
             }
         } catch (IOException | X509Exception.SSLContextException e) {
             throw new RuntimeException(e);
