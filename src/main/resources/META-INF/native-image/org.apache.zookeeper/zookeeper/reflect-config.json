@@ -147,6 +147,7 @@
     "allDeclaredFields": true,
     "allPublicConstructors": true,
     "queryAllPublicConstructors": true,
-    "allPublicClasses": true
+    "allPublicClasses": true,
+    "unsafeAllocated": true
   }
 ]
