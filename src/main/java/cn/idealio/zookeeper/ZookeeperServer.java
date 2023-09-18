@@ -2,6 +2,8 @@ package cn.idealio.zookeeper;
 
 import org.apache.zookeeper.ZooKeeperMain;
 import org.apache.zookeeper.audit.ZKAuditProvider;
+import org.apache.zookeeper.client.FourLetterWordMain;
+import org.apache.zookeeper.common.X509Exception;
 import org.apache.zookeeper.server.ExitCode;
 import org.apache.zookeeper.server.admin.AdminServer;
 import org.apache.zookeeper.server.persistence.FileTxnSnapLog;
@@ -30,6 +32,12 @@ public class ZookeeperServer extends QuorumPeerMain {
             return;
         }
 
+        // status
+        if (argSet.remove("--status")) {
+            status(argSet);
+            return;
+        }
+
         // cli
         if (argSet.remove("--cli")) {
             cli(argSet);
@@ -38,6 +46,21 @@ public class ZookeeperServer extends QuorumPeerMain {
 
         // start server
         startServer(argSet);
+    }
+
+    private static void status(@Nonnull Set<String> argSet) {
+        try {
+            String[] args = argSet.toArray(String[]::new);
+            if (args.length == 2) {
+                System.out.println(FourLetterWordMain.send4LetterWord(args[0], Integer.parseInt(args[1]), "srvr"));
+            } else if (args.length == 3) {
+                System.out.println(FourLetterWordMain.send4LetterWord(args[0], Integer.parseInt(args[1]), "srvr", Boolean.parseBoolean(args[2])));
+            } else {
+                System.out.println("Usage: --status <host> <port> <secure(optional)>");
+            }
+        } catch (IOException | X509Exception.SSLContextException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void cli(@Nonnull Set<String> argSet) {
