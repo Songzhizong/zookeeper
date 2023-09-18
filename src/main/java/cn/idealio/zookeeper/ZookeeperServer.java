@@ -51,6 +51,9 @@ public class ZookeeperServer extends QuorumPeerMain {
     private static void status(@Nonnull Set<String> argSet) {
         try {
             String[] args = argSet.toArray(String[]::new);
+            if (args.length == 0) {
+                args = new String[]{"127.0.0.1", "2181"};
+            }
             if (args.length == 2) {
                 System.out.println(FourLetterWordMain.send4LetterWord(args[0], Integer.parseInt(args[1]), "srvr"));
             } else if (args.length == 3) {
