@@ -149,5 +149,21 @@
     "queryAllPublicConstructors": true,
     "allPublicClasses": true,
     "unsafeAllocated": true
+  },
+  {
+    "name": "org.apache.zookeeper.server.util.MessageTracker$BufferedMessage[]",
+    "allDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicFields": true,
+    "allDeclaredClasses": true,
+    "allDeclaredConstructors": true,
+    "queryAllPublicMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicConstructors": true,
+    "queryAllPublicConstructors": true,
+    "allPublicClasses": true,
+    "unsafeAllocated": true
   }
 ]
