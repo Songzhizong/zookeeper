@@ -3,7 +3,7 @@ LABEL maintainer="cn.sh.ideal"
 WORKDIR /app
 ARG NATIVE_FILE
 ADD ${NATIVE_FILE} /app/zookeeper
-ADD ./conf/* /usr/conf/
+ADD conf /usr/
 EXPOSE 2181 2888 3888
 ENV JVM_OPTS=""
 ENV SPRING_PROFILE="prd"
