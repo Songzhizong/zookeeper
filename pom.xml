@@ -15,8 +15,8 @@
         <metrics.version>4.2.19</metrics.version>
         <snappy.version>1.1.10.3</snappy.version>
         <zookeeper.version>3.9.0</zookeeper.version>
-        <commons-cli.version>1.5.0</commons-cli.version>
         <jetty.version>9.4.51.v20230217</jetty.version>
+        <commons-cli.version>1.5.0</commons-cli.version>
 
         <timestamp>${maven.build.timestamp}</timestamp>
         <mainClass>cn.idealio.zookeeper.ZookeeperServer</mainClass>
@@ -233,7 +233,7 @@
             </build>
         </profile>
         <profile>
-            <id>g1-pgo</id>
+            <id>pgo-g1</id>
             <build>
                 <plugins>
                     <plugin>
