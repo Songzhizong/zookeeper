@@ -10,7 +10,7 @@ import java.util.Set;
  * @author 宋志宗 on 2023/9/7
  */
 public class CommandLineHandler {
-    private static final String PROJECT_NAME = "native-zookeeper";
+    private static final String PROJECT_NAME = "zookeeper";
 
     public static boolean exec(@Nonnull Set<String> args) {
         boolean exit = false;
@@ -47,7 +47,7 @@ public class CommandLineHandler {
 
     static void info() {
         String version = Version.getVersion();
-        String buildTime = Version.formatBuildTime("yyyy-MM-dd_HH:mm");
+        String buildTime = Version.getBuildTime();
         String osName = System.getProperty("os.name");
         if ("Mac OS X".equals(osName)) {
             osName = "MacOS";
@@ -56,7 +56,7 @@ public class CommandLineHandler {
         String vmVersion = System.getProperty("java.vm.version");
         System.out.println(PROJECT_NAME + " version " + version + " " + buildTime + " " + osName + "/" + arch + " vm " + vmVersion);
         String zookeeperFullVersion = org.apache.zookeeper.Version.getFullVersion();
-        System.out.println("zookeeper " + zookeeperFullVersion);
+        System.out.println("Apache Zookeeper " + zookeeperFullVersion);
     }
 
     static void version() {
