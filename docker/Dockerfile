@@ -1,4 +1,4 @@
-FROM debian:12.1-slim
+FROM debian:12.5-slim
 LABEL maintainer="cn.sh.ideal"
 WORKDIR /app
 ARG NATIVE_FILE
