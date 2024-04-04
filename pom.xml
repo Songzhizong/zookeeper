@@ -22,7 +22,6 @@
         <mainClass>cn.idealio.zookeeper.ZookeeperServer</mainClass>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <native-maven-plugin.version>0.10.1</native-maven-plugin.version>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
